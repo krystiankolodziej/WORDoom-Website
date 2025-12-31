@@ -134,17 +134,18 @@
 <body>
   
 <script>
-  // Wykryj język przeglądarki
   const lang = navigator.language || navigator.userLanguage;
 
-  // Jeśli zaczyna się od "pl", przekieruj na polską wersję
-  if (lang.toLowerCase().startsWith("pl")) {
+  // Jeśli użytkownik NIE wybrał ręcznie EN
+  // i język przeglądarki to PL → przekieruj
+  if (!localStorage.getItem("forceEN") && lang.toLowerCase().startsWith("pl")) {
     window.location.href = "pl.html";
   }
 </script>
 
+
 <div class="topnav">
-  <a href="pl.html">🇵🇱PL</a>
+  <a href="pl.html" onclick="localStorage.removeItem('forceEN')">🇵🇱PL</a>
 </div>
 
 <header>
